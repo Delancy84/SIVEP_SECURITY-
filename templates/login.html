@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SIVEP Security - Inicio de Sesión</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+
+            background:#0f172a;
+
+            display:flex;
+
+            justify-content:center;
+
+            align-items:center;
+
+            height:100vh;
+
+        }
+
+        .login{
+
+            width:420px;
+
+            background:white;
+
+            padding:40px;
+
+            border-radius:15px;
+
+            box-shadow:0px 0px 25px rgba(0,0,0,.4);
+
+        }
+
+        h1{
+
+            text-align:center;
+
+            color:#003366;
+
+            margin-bottom:5px;
+
+        }
+
+        h3{
+
+            text-align:center;
+
+            color:#666;
+
+            margin-bottom:35px;
+
+            font-weight:normal;
+
+        }
+
+        label{
+
+            display:block;
+
+            margin-top:15px;
+
+            margin-bottom:8px;
+
+            font-weight:bold;
+
+        }
+
+        input{
+
+            width:100%;
+
+            padding:12px;
+
+            border-radius:8px;
+
+            border:1px solid #CCC;
+
+            font-size:16px;
+
+        }
+
+        button{
+
+            width:100%;
+
+            margin-top:30px;
+
+            padding:14px;
+
+            background:#0066cc;
+
+            color:white;
+
+            border:none;
+
+            border-radius:8px;
+
+            cursor:pointer;
+
+            font-size:17px;
+
+        }
+
+        button:hover{
+
+            background:#004d99;
+
+        }
+
+        .error{
+
+            color:red;
+
+            text-align:center;
+
+            margin-top:20px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="login">
+
+<h1>SIVEP SECURITY</h1>
+
+<h3>Sistema Inteligente de Vigilancia y Escaneo de Placas</h3>
+
+<form method="POST">
+
+<label>Número de empleado</label>
+
+<input
+type="text"
+name="numero"
+required>
+
+<label>Contraseña</label>
+
+<input
+type="password"
+name="password"
+required>
+
+<button type="submit">
+    Iniciar Sesión
+</button>
+
+<br><br>
+
+<a href="{{ url_for('registro') }}">
+    <button type="button" class="btn-registro">
+        Registrar Oficial
+    </button>
+</a>
+
+</form>
+
+{% if error %}
+
+<div class="error">
+
+{{error}}
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+
+</html>

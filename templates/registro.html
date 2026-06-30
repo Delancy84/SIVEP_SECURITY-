@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Registro de Oficiales</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+
+            background:#0f172a;
+
+            display:flex;
+
+            justify-content:center;
+
+            align-items:center;
+
+            height:100vh;
+
+        }
+
+        .contenedor{
+
+            width:500px;
+
+            background:white;
+
+            padding:35px;
+
+            border-radius:15px;
+
+            box-shadow:0px 0px 20px rgba(0,0,0,.4);
+
+        }
+
+        h1{
+
+            text-align:center;
+
+            color:#003366;
+
+            margin-bottom:25px;
+
+        }
+
+        label{
+
+            display:block;
+
+            margin-top:15px;
+
+            font-weight:bold;
+
+        }
+
+        input,select{
+
+            width:100%;
+
+            padding:12px;
+
+            margin-top:5px;
+
+            border-radius:8px;
+
+            border:1px solid #CCC;
+
+        }
+
+        button{
+
+            width:100%;
+
+            margin-top:25px;
+
+            padding:14px;
+
+            background:#0066cc;
+
+            color:white;
+
+            border:none;
+
+            border-radius:8px;
+
+            font-size:16px;
+
+            cursor:pointer;
+
+        }
+
+        button:hover{
+
+            background:#004d99;
+
+        }
+
+        .error{
+
+            color:red;
+
+            text-align:center;
+
+            margin-top:15px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="contenedor">
+
+<h1>Registrar Oficial</h1>
+
+<form method="POST">
+
+<label>Número de empleado</label>
+
+<input type="text" name="numero" required>
+
+<label>Nombre</label>
+
+<input type="text" name="nombre" required>
+
+<label>Apellido</label>
+
+<input type="text" name="apellido" required>
+
+<label>Rango</label>
+
+<select name="rango">
+
+<option>Oficial</option>
+
+<option>Suboficial</option>
+
+<option>Comandante</option>
+
+<option>Supervisor</option>
+
+</select>
+
+<label>Contraseña</label>
+
+<input type="password" name="password" required>
+
+<button type="submit">
+
+Registrar Oficial
+
+</button>
+
+</form>
+
+{% if error %}
+
+<div class="error">
+
+{{error}}
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+
+</html>

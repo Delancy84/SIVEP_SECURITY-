@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SIVEP Security</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>SIVEP Security</h1>
+
+        <div style="margin-bottom:20px;">
+            <b>Oficial:</b> {{ oficial }}
+            &nbsp;&nbsp;&nbsp;
+            <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+        </div>
+
+        <h2>Sistema Inteligente de Vigilancia y Escaneo de Placas</h2>
+
+        <div class="camara-box">
+            <img src="{{ url_for('video') }}" width="100%">
+        </div>
+
+        <div class="info">
+            <h3>Información Vehicular</h3>
+            
+            <p><strong>Placa:</strong> <span id="txt-placa">Esperando escaneo...</span></p>
+            <p><strong>Propietario:</strong> <span id="txt-propietario">---</span></p>
+            <p><strong>Modelo:</strong> <span id="txt-modelo">---</span></p>
+
+            <div id="alerta-multas" class="alerta" style="display: none;">
+                ⚠ MULTAS PENDIENTES
+            </div>
+        </div>
+    </div>
+
+    <script>
+        setInterval(function() {
+            fetch('/api/vehiculo_actual')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('txt-placa').innerText = data.placa;
+                    document.getElementById('txt-propietario').innerText = data.propietario;
+                    document.getElementById('txt-modelo').innerText = data.modelo;
+
+                    let alertaBox = document.getElementById('alerta-multas');
+                    if (data.multas === true || data.multas === "True" || data.multas === "Si") {
+                        alertaBox.style.display = 'block';
+                    } else {
+                        alertaBox.style.display = 'none';
+                    }
+                })
+                .catch(error => console.error("Error al obtener datos:", error));
+        }, 1500); // Consulta cada 1.5 segundos
+    </script>
+
+</body>
+</html>
