@@ -12,11 +12,8 @@ app.secret_key = os.environ.get(
     "sivep_security_2026"
 )  # nosec B105
 
-# Inicializar el lector de OCR
-reader = easyocr.Reader(['es', 'en'], gpu=False)
-
-# Abrir la cámara web
-camara = cv2.VideoCapture(0)
+reader = None
+camara = None
 
 # Variables globales compartidas
 vehiculo_actual = {
