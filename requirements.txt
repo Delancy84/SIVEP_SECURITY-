@@ -2,4 +2,4 @@ Flask
 opencv-python
 numpy
 pymongo
-pytest
+
