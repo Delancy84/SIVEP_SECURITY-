@@ -36,8 +36,8 @@ jobs:
     - name: Ejecutar análisis de seguridad
       run: bandit -r .
     
-    - name: Instalar Safety
-      run: pip install safety
-
-    - name: Escanear dependencias
-      run: safety scan
+    - name: Ejecutar Trivy
+     uses: aquasecurity/trivy-action@0.28.0
+     with:
+    scan-type: fs
+    scan-ref: .
