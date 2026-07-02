@@ -28,13 +28,15 @@ jobs:
           pip install -r requirements.txt
 
       - name: Instalar Bandit
-        run: pip install bandit
+        run: |
+          pip install bandit
 
       - name: Ejecutar análisis de seguridad
-        run: bandit -r .
+        run: |
+          bandit -r .
 
-       - name: Ejecutar Trivy
-       uses: aquasecurity/trivy-action@master
-       with:
-       scan-type: fs
-       scan-ref: .
+      - name: Ejecutar Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: fs
+          scan-ref: .
