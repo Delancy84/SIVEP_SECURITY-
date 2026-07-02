@@ -35,3 +35,9 @@ jobs:
 
     - name: Ejecutar análisis de seguridad
       run: bandit -r .
+    
+    - name: Instalar Safety
+      run: pip install safety
+
+    - name: Escanear dependencias
+      run: safety scan
